@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
+const { data } = require('../db/flashcardData.json');
+const { cards } = data;
 
 // Additional route for displaying cards
 router.get('/', (req, res) => {
-  res.locals.prompt = "Who is buried in Grant's tomb?";
-  res.locals.hint = "Think about who's tomb it is.";
-  res.render('card');
+  res.render('card', {
+    prompt: cards[0].question,
+    hint:   cards[0].hint,
+  });
 });
 
 module.exports = router;
