@@ -1,0 +1,16 @@
+nav.navbar {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  margin-bottom: 2rem;
+}
+
+footer {
+  width: 100%;
+  background: black;
+  color: white;
+  margin-top: 2rem;
+  padding: 2rem 0;
+}
+
+.min-height {
+  min-height: calc(100vh - 286px);
+}
