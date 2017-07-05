@@ -4,14 +4,18 @@ const express = require('express');
 // Configure the application
 const app = express();
 
+app.set('view engine', 'pug');
+
 // Root path
 app.get('/', (req, res) => {
-  res.send('<h1>Hello world!</h1>');
+  res.render('index');
 });
 
 // Additional route
-app.get('/about', (req, res) => {
-  res.send('<h1>Learn more about me!</h1>');
+app.get('/cards', (req, res) => {
+  res.locals.prompt = "Who is buried in Grant's tomb?";
+  res.locals.hint = "Think about who's tomb it is.";
+  res.render('card');
 });
 
 app.listen(3000, () => {
