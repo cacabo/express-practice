@@ -4,9 +4,10 @@ block content
   section#content
     .row
       div(class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3")
-        .card
-          .card-block
-            h2= prompt
-            if hint
-              p
-                i Hint: #{hint}
+        a(href=`${id}?side=${sideToShow}` class="no-underline black")
+          .card
+            .card-block
+              h2= text
+              if hint
+                p.text-muted
+                  i Hint: #{hint}

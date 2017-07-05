@@ -3,12 +3,23 @@ const router = express.Router();
 const { data } = require('../db/flashcardData.json');
 const { cards } = data;
 
-// Additional route for displaying cards
+// Routes for displaying cards
 router.get('/:id', (req, res) => {
-  res.render('card', {
-    prompt: cards[req.params.id].question,
-    hint:   cards[req.params.id].hint,
-  });
+  // Side is either answer or question
+  const { side } = req.query;
+  const { id } = req.params;
+  const text = cards[id][side];
+  const { hint } = cards[id];
+  const templateData = { id, text };
+
+  if (side === 'question') {
+    templateData.hint = hint;
+    templateData.sideToShow = 'answer';
+  } else {
+    templateData.sideToShow = 'question';
+  }
+
+  res.render('card', templateData);
 });
 
 module.exports = router;
