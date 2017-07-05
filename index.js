@@ -1,14 +1,29 @@
 // Require modules
 const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 // Configure the application
 const app = express();
 
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: false }));
+
 app.set('view engine', 'pug');
+
+app.use((req, res, next) => {
+  console.log('one');
+  next();
+});
 
 // Root path
 app.get('/', (req, res) => {
-  res.render('index');
+  const name = req.cookies.name;
+  if (name) {
+    res.render('index', { name });
+  } else {
+    res.redirect('/hello');
+  }
 });
 
 // Additional route for displaying cards
@@ -20,11 +35,22 @@ app.get('/cards', (req, res) => {
 
 // Route for taking user input to get the user's name
 app.get('/hello', (req, res) => {
-  res.render('hello');
+  const name = req.cookies.name;
+  if (name) {
+    res.redirect('/');
+  } else {
+    res.render('hello');
+  }
 });
 
 app.post('/hello', (req, res) => {
-  res.render('hello');
+  res.cookie('name', req.body.name);
+  res.redirect('/');
+});
+
+app.post('/logout', (req, res) => {
+  res.clearCookie('name');
+  res.redirect('/hello');
 });
 
 app.listen(3000, () => {

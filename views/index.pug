@@ -2,4 +2,8 @@ extends layout.pug
 
 block content
   section#content
-    p This is some random text so we can see how this looks.
+    if name
+      h3 Welcome, #{name}!
+    p How are you doing today?
+    form(action='/logout', method='POST')
+      button(type='submit', class='btn btn-outline-primary') Log out
