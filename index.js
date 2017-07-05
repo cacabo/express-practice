@@ -12,8 +12,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.set('view engine', 'pug');
 
 app.use((req, res, next) => {
-  console.log('one');
-  next();
+  console.log('Hello');
+  const err = new Error('Oh no!');
+  next(err);
 });
 
 // Root path
@@ -52,6 +53,10 @@ app.post('/logout', (req, res) => {
   res.clearCookie('name');
   res.redirect('/hello');
 });
+
+app.use((err, req, res, next) => {
+  res.render('error', { err });
+})
 
 app.listen(3000, () => {
   console.log('The application is running on localhost:3000');

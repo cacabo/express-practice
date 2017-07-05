@@ -1,0 +1,7 @@
+extends layout
+
+block content
+    h4 Error: #{err.message}
+    p= err.status
+    .half-space
+    pre= err.stack
