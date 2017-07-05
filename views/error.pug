@@ -1,7 +1,6 @@
 extends layout
 
 block content
-    h4 Error: #{err.message}
-    p= err.status
+    h4 Error: #{err.message} (#{err.status})
     .half-space
     pre= err.stack
