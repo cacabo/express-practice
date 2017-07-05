@@ -13,44 +13,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // Set the view engine to use pug templating
 app.set('view engine', 'pug');
 
-// Root path
-app.get('/', (req, res) => {
-  const name = req.cookies.name;
-  if (name) {
-    res.render('index', { name });
-  } else {
-    res.redirect('/hello');
-  }
-});
+const mainRoutes = require('./routes/app');
+const cardRoutes = require('./routes/cardRoutes')
 
-// Additional route for displaying cards
-app.get('/cards', (req, res) => {
-  res.locals.prompt = "Who is buried in Grant's tomb?";
-  res.locals.hint = "Think about who's tomb it is.";
-  res.render('card');
-});
-
-// Route for taking user input to get the user's name
-app.get('/hello', (req, res) => {
-  const name = req.cookies.name;
-  if (name) {
-    res.redirect('/');
-  } else {
-    res.render('hello');
-  }
-});
-
-// Create name cookie
-app.post('/hello', (req, res) => {
-  res.cookie('name', req.body.name);
-  res.redirect('/');
-});
-
-// Delete name cookie
-app.post('/logout', (req, res) => {
-  res.clearCookie('name');
-  res.redirect('/hello');
-});
+app.use(mainRoutes);
+app.use('/cards', cardRoutes);
 
 // Any request that does reaches this point will throw a 404 error as it didn't match any of the above routes
 app.use((req, res, next) => {
