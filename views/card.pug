@@ -2,7 +2,11 @@ extends layout.pug
 
 block content
   section#content
-    h2= prompt
-    if hint
-      p
-        i Hint: #{hint}
+    .row
+      div(class="col-12 col-md-8 offset-md-2 col-lg-6 offset-lg-3")
+        .card
+          .card-block
+            h2= prompt
+            if hint
+              p
+                i Hint: #{hint}
