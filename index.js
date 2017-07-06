@@ -34,16 +34,7 @@ app.use((err, req, res, next) => {
 })
 
 // Listen on port 3000 for development
-let port;
-if (process && process.env) {
-  port = process.env.port;
-}
-if (port) {
-  app.listen(port, () => {
-    console.log('The application is running on ${port}');
-  });
-} else {
-  app.listen(3000, () => {
-    console.log('The application is running on localhost:3000');
-  });
-}
+// Listen on the environment's port for production
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Application is up and running on ${process.env.PORT || 3000}`);
+});
