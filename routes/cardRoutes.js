@@ -3,6 +3,11 @@ const router = express.Router();
 const { data } = require('../db/flashcardData.json');
 const { cards } = data;
 
+router.get('/', (req, res) => {
+  const id = Math.floor(Math.random() * cards.length);
+  res.redirect(`/cards/${id}?side=question`);
+});
+
 // Routes for displaying cards
 router.get('/:id', (req, res) => {
   // Side is either answer or question
