@@ -13,6 +13,12 @@ router.get('/:id', (req, res) => {
   // Side is either answer or question
   const { side } = req.query;
   const { id } = req.params;
+
+  // If no side was provided, automatically redirect to the question side of the card
+  if (!side) {
+    res.redirect(`/cards/${id}?side=question`);
+  }
+
   const text = cards[id][side];
   const { hint } = cards[id];
   const templateData = { id, text };
