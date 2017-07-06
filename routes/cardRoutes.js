@@ -40,6 +40,8 @@ router.get('/:id', (req, res) => {
     templateData.prev = `/cards/${parseInt(id) - 1}?side=question`;
   }
 
+  templateData.name = req.cookies.name;
+
   res.render('card', templateData);
 });
 
