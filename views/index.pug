@@ -5,5 +5,13 @@ block content
     if name
       h3 Welcome, #{name}!
     p How are you doing today?
+    
+    a(href='/cards/0?side=question')
+      button(class="btn btn-outline-primary mr-right-5") Start from the top!
+    a(href='/cards')
+      button(class="btn btn-outline-primary") Random card
+    
+    .space
+      
     form(action='/logout', method='POST')
-      button(type='submit', class='btn btn-outline-primary') Log out
+      button(type='submit', class='btn btn-outline-secondary') Log out

@@ -32,6 +32,14 @@ router.get('/:id', (req, res) => {
     templateData.sideToShow = 'question';
   }
 
+  if (id != cards.length - 1) {
+    templateData.next = `/cards/${parseInt(id) + 1}?side=question`;
+  }
+
+  if (id != 0) {
+    templateData.prev = `/cards/${parseInt(id) - 1}?side=question`;
+  }
+
   res.render('card', templateData);
 });
 

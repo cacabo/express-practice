@@ -11,6 +11,10 @@ nav.navbar {
   height: 1rem;
 }
 
+.mr-right-5 {
+  margin-right: 0.5rem;
+}
+
 a.no-underline {
   text-decoration: none;
 }

@@ -14,6 +14,12 @@ block content
     .space
     p.text-muted
       small Click the card to flip!
-      
-    a(href="/cards")
-      button(class="btn btn-outline-primary") Random card!
+
+    if (prev)
+      a(href=prev, class="mr-right-5")
+        button(class="btn btn-outline-primary") Previous
+    a(href="/cards", class="mr-right-5")
+      button(class="btn btn-outline-primary") Random
+    if (next)
+      a(href=next)
+        button(class="btn btn-outline-primary") Next
