@@ -2,8 +2,13 @@ extends layout.pug
 
 block content
   section#content
-    p Hi there! Welcome to my flashcards application.
-    form(class="form-inline", action='/hello', method='POST')
-      label Please enter your name &nbsp;
-        input(type='text', name='name', class='form-control mr-right-5')
-      button(type='submit', class='btn btn-outline-primary') Submit
+    h3 Hi there! Welcome to my flashcards application.
+    .half-space
+    form(class="form", action='/hello', method='POST')
+      label Please enter your name
+      .half-space
+      .row
+        div(class="col-12 col-md-8 col-lg-6 col-xl-4")
+          .flex
+            input(type='text', name='name', class='mr-right-5 form-control')
+            button(type='submit', class='btn btn-outline-primary') Submit
