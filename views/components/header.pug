@@ -1,10 +1,8 @@
 header
-  nav(class="navbar navbar-toggleable-md")
-    
-    .container
-      a(href="/" class="navbar-brand") Flashcards
+  nav(class="navbar")
+    a(href="/" class="navbar-brand") Flashcards
 
-      if name
-        div(class="nav-links")
-          form(action='/logout', method='POST')
-            button(type='submit', class="btn btn-outline-secondary my-2 my-sm-0") Log out
+    if name
+      div(class="nav-links")
+        form(action='/logout', method='POST')
+          button(type='submit', class="btn btn-outline-secondary my-2 my-sm-0") Log out
