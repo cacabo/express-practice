@@ -9,6 +9,7 @@ const app = express();
 // Middleware for handling parsing
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
 
 // Set the view engine to use pug templating
 app.set('view engine', 'pug');

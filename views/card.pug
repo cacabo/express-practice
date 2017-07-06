@@ -9,17 +9,22 @@ block content
             .card-block
               h2= text
               if hint
-                p.text-muted
-                  i Hint: #{hint}
-    .space
-    p.text-muted
-      small Click the card to flip!
-
-    if (prev)
-      a(href=prev, class="mr-right-5")
-        button(class="btn btn-outline-primary") Previous
-    a(href="/cards", class="mr-right-5")
-      button(class="btn btn-outline-primary") Random
-    if (next)
-      a(href=next)
-        button(class="btn btn-outline-primary") Next
+                p#hintReveal
+                  i.text-muted Reveal hint
+                p#hint
+                  i.text-muted #{hint}
+        .space
+          
+        a(href=`${id}?side=${sideToShow}`)
+          p.text-muted
+            small Click the card to flip!
+        
+        .half-space
+        if (prev)
+          a(href=prev, class="mr-right-5")
+            button(class="btn btn-outline-primary") Previous
+        a(href="/cards", class="mr-right-5")
+          button(class="btn btn-outline-primary") Random
+        if (next)
+          a(href=next)
+            button(class="btn btn-outline-primary") Next

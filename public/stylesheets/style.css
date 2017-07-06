@@ -11,6 +11,16 @@ nav.navbar {
   position: absolute;
 }
 
+#hint {
+  display: none;
+}
+
+.half-space,
+.space {
+  width: 100%;
+  display: block;
+}
+
 .half-space {
   height: 0.5rem;
 }
